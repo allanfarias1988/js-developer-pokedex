@@ -1,8 +1,8 @@
-
 class Pokemon {
-    number;
-    name;
-    type;
-    types = [];
-    photo;
+  id = 0;
+  name = '';
+  abilities = [];
+  base_experience = 0;
+  types = [];
+  img = '';
 }

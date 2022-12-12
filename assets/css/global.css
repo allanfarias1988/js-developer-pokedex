@@ -1,24 +1,165 @@
 * {
-    font-family: 'Roboto', sans-serif;
-    box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-body {
-    background-color: #f6f8fc;
+h1 {
+  text-align: center;
 }
 
 .content {
-    width: 100vw;
-    height: 100vh;
-    padding: 1rem;
-    background-color: #fff;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
-@media screen and (min-width: 992px) {
-    .content {
-        max-width: 992px;
-        height: auto;
-        margin: 1rem auto;
-        border-radius: 1rem;
-    }
+#cards-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.pokemon {
+  min-width: 320px;
+  max-width: 320px;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  color: #fffaf0;
+  text-transform: capitalize;
+}
+
+.pokemon .head{
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 1rem;
+}
+
+.pokemon ol {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.pokemon ol li{
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 1rem;
+}
+
+.types {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.xp {
+  margin-bottom: 1rem;
+}
+.abilities { 
+  display: flex;
+  flex-direction: column;
+}
+
+
+.pokemon .img {
+  max-width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+
+
+
+
+li {
+    transition: ease-in 100ms;
+}
+li:hover {
+  transform: scale(1.1);
+  transition: ease-out 100ms;
+}
+
+img {
+    transition: ease-in 100ms;
+}
+img:hover {
+  transform: scale(1.2);
+  transition: ease-out 100ms;
+}
+
+.load-more {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+#btn-more {
+  width: 120px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  border: none;
+  background-color: #7b89e2;
+  color: #fffaf0;
+  transition: ease-in 150ms;
+}
+
+#btn-more:hover {
+  background-color: #9c3594;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  transform: scale(1.1);
+  transition: ease-out 150ms;
+}
+
+/* BACKGROUNDS */
+
+.fire, .dragon {
+  background-color: #fc6c6d;
+}
+
+.grass {
+  background-color: #49d0b0;
+}
+
+.water, .ice {
+  background-color: #75b9f9;
+}
+
+.bug {
+  background-color: #a0b135;
+}
+
+.normal {
+  background-color: #9e9e70;
+}
+
+.electric {
+  background-color: #dcc200;
+}
+
+.poison, .ghost {
+  background-color: #9c3594;
+}
+
+.fairy {
+  background-color: #986173;
+}
+
+.ground, .rock {
+  background-color: #a1854b;
+}
+
+.fighting {
+  background-color: #bf2d2b;
+}
+
+.psychic {
+  background-color: #f74b7a;
+}
+
+.steel, .dark {
+  background-color: #485157;
 }

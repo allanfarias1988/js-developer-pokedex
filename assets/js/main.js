@@ -1,47 +1,51 @@
-const pokemonList = document.getElementById('pokemonList')
-const loadMoreButton = document.getElementById('loadMoreButton')
 
-const maxRecords = 151
-const limit = 10
-let offset = 0;
+const cardList = document.querySelector('#cards-list');
 
-function convertPokemonToLi(pokemon) {
-    return `
-        <li class="pokemon ${pokemon.type}">
-            <span class="number">#${pokemon.number}</span>
-            <span class="name">${pokemon.name}</span>
+let li = '';
 
-            <div class="detail">
-                <ol class="types">
-                    ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
+async function convertPokemonToLi(limit) {
+  for (let i = 0; i < limit; i++) {
+    const pokemon = await createNewPokemon(i);
+    li += `
+        <li class="pokemon ${pokemon.types.join(' ')}" id="${pokemon.id}">
+              <div class="head">
+                <h2 class="name">${pokemon.name}</h2>
+                <h3 class="number">#${pokemon.id}</h3>
+              </div>
+                <ol>
+                  ${pokemon.types.map((type) => `<li class="types">${type}</li>`).join(' ')}
                 </ol>
+              <div>
+              <div class="img">
+                <img src="${pokemon.img}" alt="${pokemon.name}" id="${pokemon.id}">
+              </div>
+                <p class="xp">Experience: ${pokemon.base_experience}</p>
+                <ol class="abilities">
+                <li>Abilities: </li>
+                  ${pokemon.abilities.map((ability) => `<li>${ability}</li>`).join('')}
+                </ol>
+              </div>
+        </li>`
+  }
+  cardList.innerHTML += li;
 
-                <img src="${pokemon.photo}"
-                     alt="${pokemon.name}">
-            </div>
-        </li>
-    `
 }
 
-function loadPokemonItens(offset, limit) {
-    pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
-        const newHtml = pokemons.map(convertPokemonToLi).join('')
-        pokemonList.innerHTML += newHtml
-    })
-}
+convertPokemonToLi(limit);
 
-loadPokemonItens(offset, limit)
+const btnMore = document.querySelector('#btn-more')
 
-loadMoreButton.addEventListener('click', () => {
-    offset += limit
-    const qtdRecordsWithNexPage = offset + limit
+btnMore.addEventListener('click', () => {
+  if (offset < (maxOffset - limit)) {
+    li = '';
+    offset += limit;
+    getUrlsOfPokemons(offset);
+    getPokemonDetails(id);
+    createNewPokemon(id);
+    convertPokemonToLi(limit);
+  } else {
+    alert("Limite máximo de pokemons atingido: Afim de evitar sobrecarga na API, limitamos o limite de requisições!");
+    btnMore.remove();
+  }
 
-    if (qtdRecordsWithNexPage >= maxRecords) {
-        const newLimit = maxRecords - offset
-        loadPokemonItens(offset, newLimit)
-
-        loadMoreButton.parentElement.removeChild(loadMoreButton)
-    } else {
-        loadPokemonItens(offset, limit)
-    }
 })
