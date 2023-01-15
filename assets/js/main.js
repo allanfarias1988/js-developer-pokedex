@@ -22,7 +22,7 @@ async function convertPokemonToLi(limit) {
                 <p class="xp">Experience: ${pokemon.base_experience}</p>
                 <ol class="abilities">
                 <li>Abilities: </li>
-                  ${pokemon.abilities.map((ability) => `<li>${ability}</li>`).join('')}
+                  ${pokemon.abilities.map((ability) => `<li># ${ability}</li>`).join('')}
                 </ol>
               </div>
         </li>`
